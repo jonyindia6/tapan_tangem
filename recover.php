@@ -5,6 +5,7 @@
     include_once './includes/meta.php';
     unset($_SESSION['keys']);
     ?>
+    <link rel="stylesheet" href="<?= base_url('assets/country-code-picker/css/jquery.ccpicker.css')?>">
     <body>
         <div class="container-fluid">
             <div class="row w-100 d-flex">
@@ -30,9 +31,15 @@
                                         <label for="" class="form-label fw-normal">Email address</label>
                                         <input name="email" type="email" required="" class="form-control form-control-lg" />
                                     </div>
-                                    <div class="mt15">
+                                    <div class="my15">
                                         <label for="" class="form-label fw-normal">Password</label>
                                         <input name="password" type="password" required="" minlength="3" maxlength="50" class="form-control form-control-lg"/>
+                                    </div>
+                                    <div className="my35 inputField">
+                                        <label class="form-label">Phone Number</label>
+                                        <div class="form-control" style="padding: 0px;">
+                                            <input name="phone_number" type="number" id="phone_number" required="" style="width: 75%;border: solid 0px #DDD;padding: 10px 5px;margin: 0px;" class="" placeholder="Phone number" value="" >
+                                        </div>
                                     </div>
                                     <div class="text-center mx-auto d-grid gap-2 my30">
                                         <button type="submit" class="btn btn-secondary btn-lg btn-primary-2 px20 rounded-pill btn-block">Next</button>
@@ -49,5 +56,11 @@
             </div>
         </div>
         <?php include_once './includes/footer.php'; ?>
+        <script src="./assets/country-code-picker/js/jquery.ccpicker.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#phone_number").CcPicker({ countryCode: "us", dataUrl: "<?= base_url('assets/country-code-picker/data/en.json')?>", searchPlaceHolder: "Select Country" });
+            });
+        </script>
     </body>
 </html>
